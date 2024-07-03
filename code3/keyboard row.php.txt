@@ -1,0 +1,47 @@
+class Solution {
+
+    /**
+     * @param String[] $words
+     * @return String[]
+     */
+    function findWords($words)
+     {
+        $row1 = "qwertyuiop";
+        $row2 = "asdfghjkl";
+        $row3 = "zxcvbnm";
+        
+        $result = [];
+        
+        foreach ($words as $word) {
+            $lowercaseWord = strtolower($word);
+            $inRow1 = true;
+            $inRow2 = true;
+            $inRow3 = true;
+            for ($i = 0; $i < strlen($lowercaseWord); $i++)
+             {
+                if (strpos($row1, $lowercaseWord[$i]) === false)
+                 {
+                    $inRow1 = false;
+                }
+                if (strpos($row2, $lowercaseWord[$i]) === false) 
+                {
+                    $inRow2 = false;
+                }
+                if (strpos($row3, $lowercaseWord[$i]) === false)
+                 {
+                    $inRow3 = false;
+                }
+                if (!$inRow1 && !$inRow2 && !$inRow3)
+                 {
+                    break;
+                }
+            }
+            if ($inRow1 || $inRow2 || $inRow3)
+             {
+                $result[] = $word;
+            }
+        }
+        
+        return $result;
+    }
+}

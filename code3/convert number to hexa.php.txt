@@ -1,0 +1,26 @@
+class Solution {
+
+    /**
+     * @param Integer $num
+     * @return String
+     */
+    function toHex($num)
+     {
+        if ($num == 0)
+         {
+            return "0";
+        }
+        
+        $value = '';
+        $hexChars = "0123456789abcdef";
+        $num = $num & 0xFFFFFFFF;
+        
+        while ($num > 0)
+         {
+            $value = $hexChars[$num % 16] . $value;
+            $num = intval($num / 16);
+        }
+        
+        return $value;
+    }
+}

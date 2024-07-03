@@ -1,0 +1,33 @@
+class Solution {
+
+    /**
+     * @param Integer[] $prices
+     * @return Integer
+     */
+    function maxProfit($prices) 
+    
+    {
+        $n = count($prices);
+        if ($n == 0)
+        {
+            return 0;
+        }
+
+        $minPrice = PHP_INT_MAX;
+        $maxProfit = 0;
+
+        foreach ($prices as $price)
+        {
+            if ($price < $minPrice)
+            {
+                $minPrice = $price;
+            }
+             else if ($price - $minPrice > $maxProfit)
+             {
+                $maxProfit = $price - $minPrice;
+            }
+        }
+
+        return $maxProfit;
+    }
+}
